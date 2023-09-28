@@ -4,6 +4,8 @@ Este conteúdo foi adaptado do blog da AWS, [Building serverless multi-Region We
 
 ## Solution Overview
 
+Repositório para deploy do WebApp: https://github.com/GuinaCosta/react-websocket
+
 ![Diagram](img/presentation-architecture.png)
 
 ### Prerequisites
