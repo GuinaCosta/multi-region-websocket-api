@@ -52,7 +52,7 @@ interface WebSocketStackProps extends StackProps {
   regionCodesToReplicate: string[]
 }
 
-export class WebsocketsBlogStack extends Stack {
+export class WebsocketsTdcStack extends Stack {
   constructor(scope: Construct, id: string, props: WebSocketStackProps) {
     super(scope, id, props);
 
@@ -71,7 +71,7 @@ export class WebsocketsBlogStack extends Stack {
     });
     // dedicated event bus
     const eventBus = new events.EventBus(this, 'EventBus', {
-      eventBusName: 'ChatEventBus',
+      eventBusName: 'TransactionsEventBus',
     });
 
     // (Dis-)connect handler
@@ -90,8 +90,8 @@ export class WebsocketsBlogStack extends Stack {
     const requestHandlerLambda = new SimpleLambda(this, 'RequestHandlerLambda', {
       entryFilename: 'websocket-request-handler.ts',
       handler: 'handleMessage',
-      name: 'RequestHandler',
-      description: 'Handles requests sent via websocket and stores (connectionId, chatId) tuple in DynamoDB. Sends ChatMessageReceived events to EventBridge.',
+      name: 'ClientRequestHandler',
+      description: 'Handles requests sent via websocket and stores (connectionId, chatId) tuple in DynamoDB. Sends TransactionMessageReceived events to EventBridge.',
       envVariables: {
         BUS_NAME: eventBus.eventBusName,
       },
@@ -115,15 +115,15 @@ export class WebsocketsBlogStack extends Stack {
 
     const websocketStage = new apigwv2.WebSocketStage(this, 'WebsocketStage', {
       webSocketApi,
-      stageName: 'chat',
+      stageName: 'prd',
       autoDeploy: true,
     });
 
     const processLambda = new SimpleLambda(this, 'ProcessEventLambda', {
-      entryFilename: 'websocket-response-handler.ts',
+      entryFilename: 'websocket-server-message-handler.ts',
       handler: 'handler',
-      name: 'ProcessEvent',
-      description: 'Gets invoked when a new "ChatMessageReceived" event is published to EventBridge. The function determines the connectionIds and pushes the message to the clients',
+      name: 'ServerMessageEvent',
+      description: 'Gets invoked when a new "TransactionMessageReceived" event is published to EventBridge. The function determines the connectionIds and pushes the message to the clients',
       envVariables: {
         TABLE_NAME: table.tableName,
         API_GATEWAY_ENDPOINT: websocketStage.callbackUrl,
@@ -166,8 +166,8 @@ export class WebsocketsBlogStack extends Stack {
       ruleName: 'ProcessChatMessage',
       description: 'Invokes a Lambda function for each chat message to push the event via websocket and replicates the event to event buses in other regions.',
       eventPattern: {
-        detailType: ['ChatMessageReceived'],
-        source: ['ChatApplication'],
+        detailType: ['TransactionMessageReceived'],
+        source: ['TransactionApplication'],
       },
       targets: [
         new LambdaFunction(processLambda.fn),

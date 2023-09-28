@@ -44,7 +44,7 @@ Navigate to each of the folders and run `npm install`
 
 #### 4. Configure your stack (optional)
 
-Open `cdk/bin/websockets-blog.ts` and adjust the Regions to deploy the application.
+Open `cdk/bin/websockets-tdc.ts` and adjust the Regions to deploy the application.
 
 ```
 // List of Region codes to deploy the application to

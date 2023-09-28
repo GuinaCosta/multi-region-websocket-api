@@ -1,8 +1,8 @@
 {
-  "name": "websockets-blog",
+  "name": "websockets-tdc",
   "version": "0.1.0",
   "bin": {
-    "websockets-blog": "bin/websockets-blog.js"
+    "websockets-tdc": "bin/websockets-tdc.js"
   },
   "scripts": {
     "build": "tsc",
@@ -25,6 +25,7 @@
     "@aws-cdk/aws-apigatewayv2-integrations-alpha": "^2.93.0-alpha.0",
     "aws-cdk-lib": "^2.93.0",
     "constructs": "^10.0.0",
+    "esbuild": "^0.19.3",
     "source-map-support": "^0.5.16"
   }
 }

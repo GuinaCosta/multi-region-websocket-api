@@ -12,8 +12,8 @@ export async function handleMessage(event: any) {
 
   const entry = {
     EventBusName: process.env.BUS_NAME,
-    Source: 'ChatApplication',
-    DetailType: 'ChatMessageReceived',
+    Source: 'TransactionApplication',
+    DetailType: 'TransactionMessageReceived',
     Detail: JSON.stringify({
       message: event.body,
       chatId: 'DEFAULT',
