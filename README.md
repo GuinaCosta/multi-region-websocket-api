@@ -19,7 +19,7 @@ Este conteúdo foi adaptado do blog da AWS, [Building serverless multi-Region We
 #### 1. Make sure you completed the prerequisites above and cloned this repo.
 
 ```
-git clone git@github.com:aws-samples/multi-region-websocket-api
+git clone git@github.com:GuinaCosta/multi-region-websocket-api.git
 ```
 
 #### 2. Open the repository in your preferred IDE and familiarize yourself with the structure of the project.
