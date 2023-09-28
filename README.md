@@ -1,10 +1,10 @@
-# Building serverless multi-Region WebSocket APIs with Amazon API Gateway, AWS Lambda and Amazon DynamoDB 
+# TheDevConf - Trilha Node.js - Feitiçaria ou tecnologia: Websockets com Node.js mas sem servidores?
 
-This repository contains the full source code that is used in the blog post [Building serverless multi-Region WebSocket APIs](https://aws.amazon.com/blogs/compute/building-serverless-multi-region-websocket-apis/).
+Este conteúdo foi adaptado do blog da AWS, [Building serverless multi-Region WebSocket APIs](https://aws.amazon.com/blogs/compute/building-serverless-multi-region-websocket-apis/), e complementado para apresentação no The Developer's Conference 2023 edição Business, na trilha [Node.JS](https://thedevconf.com/tdc/2023/business/trilha-node-js).
 
 ## Solution Overview
 
-![Diagram](img/architecture.png)
+![Diagram](img/presentation-architecture.png)
 
 ### Prerequisites
 
