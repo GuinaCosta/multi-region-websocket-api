@@ -6,7 +6,7 @@ import { WebsocketsTdcStack } from '../lib/websockets-tdc-stack';
 
 const app = new cdk.App();
 
-const regionsToDeploy = ['sa-east-1', 'eu-west-1'];
+const regionsToDeploy = ['sa-east-1'];
 
 // Regional stacks
 regionsToDeploy.forEach((regionCode) => {
