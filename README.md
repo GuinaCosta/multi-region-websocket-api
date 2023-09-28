@@ -88,3 +88,15 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## License
 
 This library is licensed under the MIT-0 License. See the LICENSE file.
+
+## Event Bus Sample
+
+```
+Source: TransactionApplication
+Type: TransactionMessageReceived
+Data: { 
+  "chatId": "DEFAULT",
+  "message": "{\"product\":\"{\\\"productId\\\":\\\"220c00a5-6290-4b14-a8aa-7ca0807bc1ae\\\",\\\"value\\\":97.78622027827524}\"}",
+  "senderConnectionId": "XXXX8888"
+}	
+```
