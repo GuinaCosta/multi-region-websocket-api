@@ -13,6 +13,7 @@ regionsToDeploy.forEach((regionCode) => {
   const stack = new WebsocketsTdcStack(app, `WSTdcStack-${regionCode}`, {
     env: { region: regionCode },
     regionCodesToReplicate: regionsToDeploy.filter((replicationRegion) => replicationRegion !== regionCode),
+    description: 'Deploys the regional Stack for multi-region Websocket API demo',
   });
   Tags.of(stack).add('project', 'iteris-tdc-business');
   Tags.of(stack).add('topic', 'multi-region-websocket-api');
